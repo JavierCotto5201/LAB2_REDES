@@ -15,8 +15,8 @@ class emisor(object):
         err = 0.10 
         prob = round(random.random(), 2)
 
-        if prob == err:
-            pos = random.randint(0, len(a))
+        if prob <= err:
+            pos = random.randint(0, len(a) - 1)
             if a[pos] == 1:
                 a[pos] = 0
             else:

@@ -21,9 +21,8 @@ class receptor:
         print("")
 
 
-    def codificacion():
-        print("")
-
+    def codificacion(self, msj):
+        msj.tobytes()
 
     def recibir_objeto():
         print("")
