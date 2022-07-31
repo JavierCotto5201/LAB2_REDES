@@ -23,11 +23,12 @@ class emisor(object):
         self.agregar_ruido(a)
 
     def agregar_ruido(self, a):
-        err = 0.10 
+        err = 0.5
         prob = round(random.random(), 2)
+        print(prob)
 
         if prob <= err:
-            pos = random.randint(0, len(a) - 1)
+            pos = random.randint(0, len(a))
             if a[pos] == 1:
                 a[pos] = 0
             else:
