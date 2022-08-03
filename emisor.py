@@ -11,11 +11,11 @@
 
 from bitarray import bitarray
 import random
-from Parity2Dcheck import *
+from Parity2Dcheck import Parity
+
 
 class emisor(object):
-    def enviar_cadena(self):
-        msj = input("Ingrese mensaje a enviar: ")
+    def enviar_cadena(self, msj):
         msjM, a = self.enviar_cadena_segura(msj)
         return msjM, a
 
@@ -25,11 +25,11 @@ class emisor(object):
         p2d = Parity()
         msjM = p2d.matriz(a)
         a = self.agregar_ruido(a)
+        return msjM, a
 
     def agregar_ruido(self, a):
         err = 0.5
         prob = round(random.random(), 2)
-        #print(prob)
 
         if prob <= err:
             pos = random.randint(0, len(a))
@@ -39,9 +39,3 @@ class emisor(object):
                 a[pos] = 1
 
         return a
-
-    #def enviar_objeto():
-        
-
-#llamar = emisor()
-#llamar.enviar_cadena()

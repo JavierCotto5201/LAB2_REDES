@@ -1,4 +1,7 @@
 import time, socket, sys
+from emisor import emisor
+
+em = emisor()
  
 socket_server = socket.socket()
 server_host = socket.gethostname()
@@ -21,4 +24,5 @@ while True:
     message = (socket_server.recv(1024)).decode()
     print(server_name, ":", message)
     message = input("Me : ")
-    socket_server.send(message.encode())  
+    msj, a = em.enviar_cadena(message)
+    socket_server.send(message.encode())
