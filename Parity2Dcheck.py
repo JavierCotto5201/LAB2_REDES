@@ -31,7 +31,8 @@ class Parity():
         f4 = self.checkV(f2)
         f4 = self.checkParity(f4)
         f3.append(f4)
-        print(f3)
+
+        return f3
 
     def checkH(self, f2):
         cn = 0
@@ -50,7 +51,7 @@ class Parity():
                 cn = 0
             
             f3.append(t)
-        print("Verficación Horizontal: ", f3)
+        #print("Verficación Horizontal: ", f3)
         return f3
 
     def checkV(self, f2):
@@ -73,7 +74,7 @@ class Parity():
             f4.append(t[4])
             t = ""
         f4 = ''.join(f4)
-        print("Verificación Vertical: ", f4)
+        #print("Verificación Vertical: ", f4)
         return f4
 
     def checkParity(self, f4):
@@ -89,5 +90,5 @@ class Parity():
 
         return f4
 
-p2d = Parity()
-p2d.matriz(bitarray('01101000011011110110110001100001'))
+#p2d = Parity()
+#p2d.matriz()
