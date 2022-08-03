@@ -9,20 +9,20 @@
 #| Javier Alejandro Cotto Argueta   |
 #-----------------------------------#
 from bitarray import bitarray
+import numpy as np
 
 class receptor:
-    def __init__(self):
-    
     def recibir_cadena():
+        msj.tobytes()
         print("")
-
 
     def recibir_cadena_segura():
         print("")
 
-
-    def codificacion(self, msj):
-        msj.tobytes()
-
     def recibir_objeto():
         print("")
+
+    
+#fletcher_checksum(bitarray('01101000011010110110110001100001'))
+#print(blocks)
+
