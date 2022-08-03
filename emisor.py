@@ -28,7 +28,7 @@ class emisor(object):
         return msjM, a
 
     def agregar_ruido(self, a):
-        err = 0.5
+        err = 0.1
         prob = round(random.random(), 2)
 
         if prob <= err:
