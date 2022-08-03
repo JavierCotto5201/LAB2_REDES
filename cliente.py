@@ -1,42 +1,24 @@
-# Python program to implement client side of chat room.
-import socket
-import select
-import sys
-from emisor import *
+import time, socket, sys
  
-server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-if len(sys.argv) != 3:
-    print ("Correct usage: script, IP address, port number")
-    exit()
-IP_address = str(sys.argv[1])
-Port = int(sys.argv[2])
-server.connect((IP_address, Port))
-
+socket_server = socket.socket()
+server_host = socket.gethostname()
+ip = socket.gethostbyname(server_host)
+sport = 8080
+ 
+print('This is your IP address: ',ip)
+server_host = input('Enter friend\'s IP address:')
+name = input('Enter Friend\'s name: ')
+ 
+ 
+socket_server.connect((server_host, sport))
+ 
+socket_server.send(name.encode())
+server_name = socket_server.recv(1024)
+server_name = server_name.decode()
+ 
+print(server_name,' has joined...')
 while True:
-    # maintains a list of possible input streams
-    sockets_list = [sys.stdin, server]
- 
-    """ There are two possible input situations. Either the
-    user wants to give manual input to send to other people,
-    or the server is sending a message to be printed on the
-    screen. Select returns from sockets_list, the stream that
-    is reader for input. So for example, if the server wants
-    to send a message, then the if condition will hold true
-    below.If the user wants to send a message, the else
-    condition will evaluate as true"""
-    read_sockets,write_socket, error_socket = select.select(sockets_list,[],[])
- 
-    for socks in read_sockets:
-        if socks == server:
-            message = socks.recv(2048)
-            print (message)
-        else:
-            emi = emisor()
-            msjM, a = emi.enviar_cadena()
-            message = msjM
-            server.send(message)
-            sys.stdout.write("<You>")
-            sys.stdout.write(message)
-            sys.stdout.flush()
-    
-    server.close()
+    message = (socket_server.recv(1024)).decode()
+    print(server_name, ":", message)
+    message = input("Me : ")
+    socket_server.send(message.encode())  
